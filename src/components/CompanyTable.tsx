@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import type { Company } from "@/lib/data";
 import { formatMoney, formatNum } from "@/lib/data";
 
@@ -87,7 +88,7 @@ export function CompanyTable({ companies }: { companies: Company[] }) {
                   className="border-b border-border/50 hover:bg-bg-card-hover transition-colors"
                 >
                   <td className="p-4">
-                    <div className="font-semibold text-text-primary">{c.company}</div>
+                    <Link href={`/company/${encodeURIComponent(c.company)}`} className="font-semibold text-text-primary hover:text-cyan-accent transition-colors">{c.company}</Link>
                     <div className="hidden sm:block text-xs text-text-secondary mt-0.5 line-clamp-1">
                       {c.description}
                     </div>
