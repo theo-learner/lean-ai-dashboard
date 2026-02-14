@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyan-accent: #00FFD1;
+  --color-violet-accent: #8B5CF6;
+  --color-bg-primary: #0a0a0f;
+  --color-bg-card: rgba(15, 15, 25, 0.8);
+  --color-bg-card-hover: rgba(20, 20, 35, 0.9);
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-border: rgba(0, 255, 209, 0.15);
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+}
+
+.glass-card {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.glass-card:hover {
+  background: var(--color-bg-card-hover);
+  border-color: rgba(0, 255, 209, 0.3);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.glow-cyan {
+  text-shadow: 0 0 20px rgba(0, 255, 209, 0.5);
+}
+
+.glow-violet {
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 209, 0.2);
+  border-radius: 3px;
+}
