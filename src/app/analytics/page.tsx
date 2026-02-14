@@ -6,7 +6,7 @@ export default async function AnalyticsPage() {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-6 font-mono">
-        <span className="text-cyan-accent glow-cyan">$</span> analytics
+        <span className="text-cyan-accent glow-cyan">$</span> 분석
       </h2>
       <AnalyticsCharts companies={companies} />
     </div>

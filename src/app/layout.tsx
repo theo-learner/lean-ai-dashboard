@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Lean AI Leaderboard",
-  description: "Dashboard tracking lean AI companies and their metrics",
+  title: "린 AI 리더보드",
+  description: "린 AI 기업 지표 대시보드",
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="ko" className="dark">
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
@@ -26,20 +26,20 @@ export default function RootLayout({
               <span className="text-cyan-accent font-mono text-lg font-bold glow-cyan">
                 {">"}_
               </span>
-              <h1 className="text-lg font-bold">Lean AI Leaderboard</h1>
+              <h1 className="text-lg font-bold">린 AI 리더보드</h1>
             </div>
             <div className="flex gap-4 text-sm font-mono">
               <a
                 href="/"
                 className="text-text-secondary hover:text-cyan-accent transition-colors"
               >
-                Dashboard
+                대시보드
               </a>
               <a
                 href="/analytics"
                 className="text-text-secondary hover:text-cyan-accent transition-colors"
               >
-                Analytics
+                분석
               </a>
             </div>
           </div>

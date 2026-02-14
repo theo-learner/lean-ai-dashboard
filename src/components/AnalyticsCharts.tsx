@@ -58,24 +58,24 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div className={chartCard}>
         <h3 className="font-mono text-sm text-text-secondary mb-4 uppercase tracking-wider">
-          ARR vs Employees
+          연 매출 vs 직원 수
         </h3>
         <ResponsiveContainer width="100%" height={300}>
           <ScatterChart margin={{ top: 10, right: 10, bottom: 20, left: 10 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
             <XAxis
               dataKey="employees"
-              name="Employees"
+              name="직원 수"
               type="number"
               tick={{ fill: "#94a3b8", fontSize: 11, fontFamily: "JetBrains Mono" }}
-              label={{ value: "Employees", position: "bottom", fill: "#94a3b8", fontSize: 11 }}
+              label={{ value: "직원 수", position: "bottom", fill: "#94a3b8", fontSize: 11 }}
             />
             <YAxis
               dataKey="revenue"
-              name="ARR ($M)"
+              name="연 매출 ($M)"
               type="number"
               tick={{ fill: "#94a3b8", fontSize: 11, fontFamily: "JetBrains Mono" }}
-              label={{ value: "ARR ($M)", angle: -90, position: "insideLeft", fill: "#94a3b8", fontSize: 11 }}
+              label={{ value: "연 매출 ($M)", angle: -90, position: "insideLeft", fill: "#94a3b8", fontSize: 11 }}
             />
             <Tooltip
               contentStyle={{
@@ -87,7 +87,7 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
               }}
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               formatter={(value: any, name: any) => [
-                name === "ARR ($M)" ? `$${Number(value).toFixed(1)}M` : value,
+                name === "연 매출 ($M)" ? `$${Number(value).toFixed(1)}M` : value,
                 name,
               ]}
               labelFormatter={(_, payload) => payload?.[0]?.payload?.name || ""}
@@ -103,7 +103,7 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
 
       <div className={chartCard}>
         <h3 className="font-mono text-sm text-text-secondary mb-4 uppercase tracking-wider">
-          Revenue/Employee (Top 20) — $M
+          직원당 매출 (상위 20) — $M
         </h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={revPerEmp} margin={{ top: 10, right: 10, bottom: 40, left: 10 }}>
@@ -134,7 +134,7 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
 
       <div className={chartCard}>
         <h3 className="font-mono text-sm text-text-secondary mb-4 uppercase tracking-wider">
-          Valuation/Employee (Top 20) — $M
+          직원당 기업가치 (상위 20) — $M
         </h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={valPerEmp} margin={{ top: 10, right: 10, bottom: 40, left: 10 }}>
@@ -165,7 +165,7 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
 
       <div className={chartCard}>
         <h3 className="font-mono text-sm text-text-secondary mb-4 uppercase tracking-wider">
-          Founded Year Distribution
+          설립연도 분포
         </h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={foundedData} margin={{ top: 10, right: 10, bottom: 20, left: 10 }}>

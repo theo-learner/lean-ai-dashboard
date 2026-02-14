@@ -32,10 +32,10 @@ export function CompanyTable({ companies }: { companies: Company[] }) {
   };
 
   const cols: { key: SortKey; label: string }[] = [
-    { key: "annualRevenue", label: "ARR" },
-    { key: "employees", label: "Employees" },
-    { key: "revenuePerEmployee", label: "Rev/Emp" },
-    { key: "valuation", label: "Valuation" },
+    { key: "annualRevenue", label: "연 매출" },
+    { key: "employees", label: "직원 수" },
+    { key: "revenuePerEmployee", label: "매출/직원" },
+    { key: "valuation", label: "기업가치" },
   ];
 
   return (
@@ -44,13 +44,13 @@ export function CompanyTable({ companies }: { companies: Company[] }) {
         <div className="relative flex-1 min-w-[200px]">
           <input
             type="text"
-            placeholder="Search companies..."
+            placeholder="기업 검색..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full bg-bg-card border border-border rounded-lg px-4 py-2.5 text-sm font-mono text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:border-cyan-accent/50 transition-colors"
           />
           <span className="absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary text-xs font-mono">
-            {filtered.length} results
+            {filtered.length}개 결과
           </span>
         </div>
       </div>
@@ -61,7 +61,7 @@ export function CompanyTable({ companies }: { companies: Company[] }) {
             <thead>
               <tr className="border-b border-border">
                 <th className="text-left p-4 text-text-secondary font-mono text-xs uppercase tracking-wider">
-                  Company
+                  기업명
                 </th>
                 {cols.map((c) => (
                   <th
@@ -73,7 +73,7 @@ export function CompanyTable({ companies }: { companies: Company[] }) {
                   </th>
                 ))}
                 <th className="text-center p-4 text-text-secondary font-mono text-xs uppercase tracking-wider">
-                  Profitable
+                  수익성
                 </th>
               </tr>
             </thead>
@@ -89,7 +89,7 @@ export function CompanyTable({ companies }: { companies: Company[] }) {
                       {c.description}
                     </div>
                     <div className="text-xs text-text-secondary/60 font-mono mt-0.5">
-                      {c.location} · Founded {c.founded || "N/A"}
+                      {c.location} · 설립 {c.founded || "N/A"}
                     </div>
                   </td>
                   <td className="p-4 text-right font-mono text-cyan-accent">
@@ -110,7 +110,7 @@ export function CompanyTable({ companies }: { companies: Company[] }) {
                           : "bg-red-500/10 text-red-400"
                       }`}
                     >
-                      {c.profitable ? "Yes" : "No"}
+                      {c.profitable ? "예" : "아니오"}
                     </span>
                   </td>
                 </tr>

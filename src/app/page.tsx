@@ -12,10 +12,10 @@ export default async function Home() {
     companies.filter((c) => c.employees > 0).reduce((s, c, _, a) => s + c.employees / a.length, 0);
 
   const metrics = [
-    { label: "Total Companies", value: totalCompanies.toString(), icon: "🏢" },
-    { label: "Total ARR", value: formatMoney(totalRevenue), icon: "💰" },
-    { label: "Avg Rev/Employee", value: formatMoney(avgRevPerEmp), icon: "⚡" },
-    { label: "Avg Team Size", value: Math.round(avgTeamSize).toString(), icon: "👥" },
+    { label: "총 기업 수", value: totalCompanies.toString(), icon: "🏢" },
+    { label: "총 매출", value: formatMoney(totalRevenue), icon: "💰" },
+    { label: "평균 매출/직원", value: formatMoney(avgRevPerEmp), icon: "⚡" },
+    { label: "평균 팀 규모", value: Math.round(avgTeamSize).toString(), icon: "👥" },
   ];
 
   return (
