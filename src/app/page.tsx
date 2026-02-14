@@ -11,11 +11,14 @@ export default async function Home() {
   const avgTeamSize =
     companies.filter((c) => c.employees > 0).reduce((s, c, _, a) => s + c.employees / a.length, 0);
 
+  const safeAvgRevPerEmp = isNaN(avgRevPerEmp) || !isFinite(avgRevPerEmp) ? 0 : avgRevPerEmp;
+  const safeAvgTeamSize = isNaN(avgTeamSize) || !isFinite(avgTeamSize) ? 0 : avgTeamSize;
+
   const metrics = [
     { label: "총 기업 수", value: totalCompanies.toString(), icon: "🏢" },
     { label: "총 매출", value: formatMoney(totalRevenue), icon: "💰" },
-    { label: "평균 매출/직원", value: formatMoney(avgRevPerEmp), icon: "⚡" },
-    { label: "평균 팀 규모", value: Math.round(avgTeamSize).toString(), icon: "👥" },
+    { label: "평균 매출/직원", value: safeAvgRevPerEmp > 0 ? formatMoney(safeAvgRevPerEmp) : "N/A", icon: "⚡" },
+    { label: "평균 팀 규모", value: safeAvgTeamSize > 0 ? Math.round(safeAvgTeamSize).toString() : "N/A", icon: "👥" },
   ];
 
   return (

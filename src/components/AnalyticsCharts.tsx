@@ -52,7 +52,13 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
     .sort((a, b) => a[0] - b[0])
     .map(([year, count]) => ({ year: year.toString(), count }));
 
-  const chartCard = "glass-card p-6";
+  const chartCard = "glass-card p-6 min-h-[400px]";
+
+  const emptyMsg = (
+    <div className="flex items-center justify-center h-[350px] text-text-secondary font-mono text-sm">
+      데이터 없음
+    </div>
+  );
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -60,7 +66,7 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
         <h3 className="font-mono text-sm text-text-secondary mb-4 uppercase tracking-wider">
           연 매출 vs 직원 수
         </h3>
-        <ResponsiveContainer width="100%" height={300}>
+        {scatterData.length === 0 ? emptyMsg : <ResponsiveContainer width="100%" height={350}>
           <ScatterChart margin={{ top: 10, right: 10, bottom: 20, left: 10 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
             <XAxis
@@ -98,14 +104,14 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
               ))}
             </Scatter>
           </ScatterChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer>}
       </div>
 
       <div className={chartCard}>
         <h3 className="font-mono text-sm text-text-secondary mb-4 uppercase tracking-wider">
           직원당 매출 (상위 20) — $M
         </h3>
-        <ResponsiveContainer width="100%" height={300}>
+        {revPerEmp.length === 0 ? emptyMsg : <ResponsiveContainer width="100%" height={350}>
           <BarChart data={revPerEmp} margin={{ top: 10, right: 10, bottom: 40, left: 10 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
             <XAxis
@@ -129,14 +135,14 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
             />
             <Bar dataKey="value" fill="#00FFD1" radius={[4, 4, 0, 0]} />
           </BarChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer>}
       </div>
 
       <div className={chartCard}>
         <h3 className="font-mono text-sm text-text-secondary mb-4 uppercase tracking-wider">
           직원당 기업가치 (상위 20) — $M
         </h3>
-        <ResponsiveContainer width="100%" height={300}>
+        {valPerEmp.length === 0 ? emptyMsg : <ResponsiveContainer width="100%" height={350}>
           <BarChart data={valPerEmp} margin={{ top: 10, right: 10, bottom: 40, left: 10 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
             <XAxis
@@ -160,14 +166,14 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
             />
             <Bar dataKey="value" fill="#8B5CF6" radius={[4, 4, 0, 0]} />
           </BarChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer>}
       </div>
 
       <div className={chartCard}>
         <h3 className="font-mono text-sm text-text-secondary mb-4 uppercase tracking-wider">
           설립연도 분포
         </h3>
-        <ResponsiveContainer width="100%" height={300}>
+        {foundedData.length === 0 ? emptyMsg : <ResponsiveContainer width="100%" height={350}>
           <BarChart data={foundedData} margin={{ top: 10, right: 10, bottom: 20, left: 10 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
             <XAxis
@@ -190,7 +196,7 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
               ))}
             </Bar>
           </BarChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer>}
       </div>
     </div>
   );

@@ -72,6 +72,9 @@ export function CompanyTable({ companies }: { companies: Company[] }) {
                     {c.label} {sortKey === c.key ? (sortAsc ? "↑" : "↓") : ""}
                   </th>
                 ))}
+                <th className="text-right p-4 text-text-secondary font-mono text-xs uppercase tracking-wider whitespace-nowrap">
+                  ARR 달성(월)
+                </th>
                 <th className="text-center p-4 text-text-secondary font-mono text-xs uppercase tracking-wider">
                   수익성
                 </th>
@@ -101,6 +104,9 @@ export function CompanyTable({ companies }: { companies: Company[] }) {
                   </td>
                   <td className="p-4 text-right font-mono">
                     {formatMoney(c.valuation)}
+                  </td>
+                  <td className="p-4 text-right font-mono text-text-secondary">
+                    {c.monthsToARR != null ? `${c.monthsToARR}개월` : "—"}
                   </td>
                   <td className="p-4 text-center">
                     <span
