@@ -88,23 +88,25 @@ export async function fetchCompanies(): Promise<Company[]> {
   const data = rows.slice(1);
   return data
     .map((cols) => ({
-      company: (cols[0] || "").trim(),
-      description: (cols[1] || "").trim(),
-      location: (cols[2] || "").trim(),
-      annualRevenue: parseMoney(cols[3] || ""),
-      employees: parseNum(cols[4] || ""),
-      revenuePerEmployee: parseMoney(cols[5] || ""),
-      profitable: (cols[6] || "").trim().toLowerCase() === "yes",
+      company: (cols[2] || "").trim(),
+      description: (cols[3] || "").trim(),
+      location: (cols[4] || "").trim(),
+      annualRevenue: parseMoney(cols[5] || ""),
+      employees: parseNum(cols[6] || ""),
+      revenuePerEmployee: parseMoney(cols[7] || ""),
+      profitable: ["yes", "true", "y", "예"].includes(
+        (cols[8] || "").trim().toLowerCase(),
+      ),
       monthsToARR:
-        cols[7] && cols[7].trim() && cols[7].trim() !== "N/A"
-          ? parseNum(cols[7])
+        cols[9] && cols[9].trim() && cols[9].trim() !== "N/A"
+          ? parseNum(cols[9])
           : null,
-      totalFunding: parseMoney(cols[8] || ""),
-      valuation: parseMoney(cols[9] || ""),
-      valuationPerEmployee: parseMoney(cols[10] || ""),
-      founded: parseNum(cols[11] || ""),
-      lastUpdated: (cols[12] || "").trim(),
-      source: (cols[13] || "").trim(),
+      totalFunding: parseMoney(cols[10] || ""),
+      valuation: parseMoney(cols[11] || ""),
+      valuationPerEmployee: parseMoney(cols[12] || ""),
+      founded: parseNum(cols[13] || ""),
+      lastUpdated: (cols[14] || "").trim(),
+      source: (cols[15] || "").trim(),
     }))
     .filter((c) => c.company);
 }

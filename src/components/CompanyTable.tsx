@@ -85,10 +85,10 @@ export function CompanyTable({ companies }: { companies: Company[] }) {
                 >
                   <td className="p-4">
                     <div className="font-semibold text-text-primary">{c.company}</div>
-                    <div className="text-xs text-text-secondary mt-0.5 line-clamp-1">
+                    <div className="hidden sm:block text-xs text-text-secondary mt-0.5 line-clamp-1">
                       {c.description}
                     </div>
-                    <div className="text-xs text-text-secondary/60 font-mono mt-0.5">
+                    <div className="hidden sm:block text-xs text-text-secondary/60 font-mono mt-0.5">
                       {c.location} · 설립 {c.founded || "N/A"}
                     </div>
                   </td>
