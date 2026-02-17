@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClientErrorBoundary } from "@/components/ClientErrorBoundary";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -44,9 +45,11 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-          {children}
-        </main>
+        <ClientErrorBoundary>
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+            {children}
+          </main>
+        </ClientErrorBoundary>
       </body>
     </html>
   );
