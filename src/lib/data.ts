@@ -80,7 +80,13 @@ export function parseCSV(text: string): string[][] {
 }
 
 export async function fetchCompanies(): Promise<Company[]> {
-  const res = await fetch(CSV_URL, { next: { revalidate: 3600 } });
+  let res: Response;
+  try {
+    res = await fetch(CSV_URL, { next: { revalidate: 3600 } });
+  } catch {
+    return [];
+  }
+  if (!res.ok) return [];
   const text = await res.text();
   const rows = parseCSV(text);
   if (rows.length < 2) return [];
