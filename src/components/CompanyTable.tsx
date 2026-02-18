@@ -46,6 +46,7 @@ export function CompanyTable({ companies }: { companies: Company[] }) {
           <input
             type="text"
             placeholder="기업 검색..."
+            aria-label="기업 검색"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full bg-bg-card border border-border rounded-lg px-4 py-2.5 text-sm font-mono text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:border-cyan-accent/50 transition-colors"
