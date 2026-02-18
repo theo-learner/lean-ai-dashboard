@@ -13,7 +13,6 @@ import {
   Cell,
 } from "recharts";
 import type { Company } from "@/lib/data";
-import { formatMoney } from "@/lib/data";
 
 export function AnalyticsCharts({ companies }: { companies: Company[] }) {
   const scatterData = companies
@@ -91,7 +90,6 @@ export function AnalyticsCharts({ companies }: { companies: Company[] }) {
                 fontFamily: "JetBrains Mono",
                 fontSize: 12,
               }}
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               formatter={(value: any, name: any) => [
                 name === "연 매출 ($M)" ? `$${Number(value).toFixed(1)}M` : value,
                 name,

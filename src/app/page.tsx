@@ -1,4 +1,4 @@
-import { fetchCompanies, formatMoney, formatNum } from "@/lib/data";
+import { fetchCompanies, formatMoney } from "@/lib/data";
 import { CompanyTable } from "@/components/CompanyTable";
 
 export default async function Home() {
