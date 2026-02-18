@@ -18,7 +18,7 @@ export interface Company {
   source: string;
 }
 
-function parseMoney(val: string): number {
+export function parseMoney(val: string): number {
   if (!val || val === "N/A" || val === "-" || val === "") return 0;
   val = val.replace(/[$,]/g, "").trim();
   const mult = val.includes("B")
@@ -32,13 +32,13 @@ function parseMoney(val: string): number {
   return isNaN(num) ? 0 : num * mult;
 }
 
-function parseNum(val: string): number {
+export function parseNum(val: string): number {
   if (!val || val === "N/A" || val === "-") return 0;
   const n = parseFloat(val.replace(/[,$]/g, "").trim());
   return isNaN(n) ? 0 : n;
 }
 
-function parseCSV(text: string): string[][] {
+export function parseCSV(text: string): string[][] {
   const rows: string[][] = [];
   let current: string[] = [];
   let field = "";

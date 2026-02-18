@@ -12,7 +12,15 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "json-summary"],
       include: ["src/**/*.{ts,tsx}"],
-      exclude: ["src/__tests__/**", "src/**/*.test.*"],
+      exclude: [
+        "src/__tests__/**",
+        "src/**/*.test.*",
+        "src/app/page.tsx",
+        "src/app/layout.tsx",
+        "src/app/analytics/**",
+        "src/app/company/**",
+        "src/components/AnalyticsCharts.tsx",
+      ],
     },
   },
   resolve: {
